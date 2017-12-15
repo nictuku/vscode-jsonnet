@@ -31,10 +31,16 @@ in `settings.json`:
   `jsonnet` executable, if it's not on the `PATH`. (NOTE: This setting
   is always necessary on Windows.)
 * `jsonnet.libPaths`: Additional paths to search for libraries when compiling Jsonnet code.
-* `jsonnet.outputFormat`: Preview output format: yaml or json (default is yaml).
-* `jsonnet.extStrs`: External strings to pass to `jsonnet` executable.
+* `jsonnet.outputFormat`: A choice of two string literals: `["json",
+  "yaml"]`. This tells the extension what format you'd like the output
+  to be (_i.e._, allows you to either output JSON or YAML).
+* `jsonnet.extStrs`: An object of variable, value pairs. Allows you to
+  customize the external variables passed to the `jsonnet` command
+  line. It can be particularly useful to set this in a workspace
+  configuration, so that you can set different variables on a
+  per-project basis.
 
-This extension exposes the following commands, which can be bound to
+The extension exposes the following commands, which can be bound to
 keys:
 
 * `jsonnet.previewToSide`: Compiles the Jsonnet file to JSON, places
@@ -42,17 +48,6 @@ keys:
   pane, or in the current pane if active window is pane 3 (since
   vscode only allows 3 panes). Default: bound to `shift+ctrl+i` (or
   `shift+cmd+i` on macOS).
-* `jsonnet.previewToSide`: Compiles the Jsonnet file to JSON, places
-  result in a "preview" window in the current active pane. Default: no
-  keybinding.
-* `jsonnet.extStrs`: An object of variable, value pairs. Allows you to
-  customize the external variables passed to the `jsonnet` command
-  line. It can be particularly useful to set this in a workspace
-  configuration, so that you can set different variables on a
-  per-project basis.
-* `jsonnet.outputFormat`: A choice of two string literals: `["json",
-  "yaml"]`. This tells the extension what format you'd like the output
-  to be (_i.e._, allows you to either output JSON or YAML).
 
 [jsonnet]: http://jsonnet.org/ "Jsonnet"
 [jsonnet-demo]: https://raw.githubusercontent.com/heptio/vscode-jsonnet/master/images/kube-demo.gif
